@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Node Debug</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section><section id="js-debug" class="title-slide slide level1"><h1>JS Debug</h1></section><section id="c-端调试" class="slide level2">
+<h2>C 端调试</h2>
+<h3 id="chrome-调试">chrome 调试</h3>
+<ol type="1">
+<li>demo</li>
+<li>特性 ### chrome inspect 调试 – 安卓</li>
+<li>需要开发版的 <code>APP</code></li>
+<li>翻墙 ### safari 调试 – ios</li>
+<li><code>safari</code> 打开的网页（XCode 打开的 webview）</li>
+<li>手机 <code>safari</code> 开启 <code>高级 -&gt; 启用 “开发”</code> 选项</li>
+<li>mac <code>safari</code> 开启功能 <code>高级 -&gt; Web 检查器</code> ## 调试脚本 ### 代码调试 #### node debug</li>
+<li><code>node debug add.js</code></li>
+<li><code>r(run)、continue(c)、next(n)、step(s)、out(p)</code> #### node inspect</li>
+<li><code>node --inspect-brk add.js</code></li>
+<li>浏览器打开 <code>chrome-devtools://devtools/bundled/js_app.html?experiments=true&amp;v8only=true&amp;ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29</code></li>
+<li>访问 <code>chrome://flags/#enable-devtools-experiments</code> 开始 <code>devtools</code> 功能 #### vscode 调试</li>
+<li>配置 <code>launch.json</code> ### cli 代码调试 ## Node 调试 ## nodeServer 调试</li>
+<li><code>node --inpsect listen.js</code></li>
+<li><code>chrome</code> 打开 <code>chrome::inspect</code> <code>devtools</code> 上点击 <code>node</code> 图标</li>
+<li><code>vscode</code> 配置 <code>JSON</code> ### 调试 TS</li>
+<li>编译 ts，带有 <code>souceMap</code></li>
+<li>配置 <code>launch</code> 到对应的js文件</li>
+</ol>
+<p><strong>任何带有 <code>sourceMap</code> 的文件都可以调试</strong> ### 子进程调试 ### 远程调试 ## node 源码调试 ### 代码配置步骤 1. 下载 <code>node</code> 源码、<code>CLion</code> 客户端 2. <code>sh configure</code> 执行配置文件 (1hous) 3. <code>make</code> 根据 <code>makefile</code> 的配置，进行编译，生成可执行文件 4. <code>make install</code> 安装 (半个小时) ### IDE 配置 1. 导入项目(<code>New Project</code>)，会生成对应的 <code>CMakeList.txt</code>（），以下是配置 <code>Debug</code> 参数 2. target -&gt; node 3. executable -&gt; out/Debug/node 4. program arguments -&gt; test.js 新建调试脚本 5. working directory -&gt; projectPath 工作目录脚本 6. Before launch 删除 build ，如果需要改代码 debug ，手动 make</p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
